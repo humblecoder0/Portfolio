@@ -1,90 +1,71 @@
-"use client";
-
-import { motion, useReducedMotion } from "framer-motion";
-import { projects, type Project } from "@/lib/content";
+import Image from "next/image";
+import { projects } from "@/lib/content";
 import SectionHeading from "./SectionHeading";
-import { Reveal } from "./motion/Reveal";
 import { ArrowUpRightIcon } from "./Icons";
-
-const EASE = [0.22, 1, 0.36, 1] as const;
-
-function ProjectCard({ project }: { project: Project }) {
-  const reduce = useReducedMotion();
-
-  return (
-    <motion.li
-      variants={{
-        hidden: { opacity: 0, y: reduce ? 0 : 20 },
-        show: {
-          opacity: 1,
-          y: 0,
-          transition: { duration: reduce ? 0 : 0.6, ease: EASE },
-        },
-      }}
-    >
-      <a
-        href={project.href}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="group relative flex h-full flex-col overflow-hidden rounded-2xl bg-ink-900/60 p-6 hairline transition-all duration-300 hover:-translate-y-1 hover:bg-ink-850 hover:shadow-xl hover:shadow-black/30"
-      >
-        {/* hover glow */}
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -right-12 -top-12 h-40 w-40 rounded-full bg-accent/10 opacity-0 blur-3xl transition-opacity duration-300 group-hover:opacity-100"
-        />
-
-        <div className="mb-5 flex items-start justify-between">
-          <span className="font-display text-sm font-medium text-zinc-500">
-            {project.year}
-          </span>
-          <span className="text-zinc-500 transition-all duration-200 group-hover:text-accent-soft">
-            <ArrowUpRightIcon className="h-5 w-5 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-          </span>
-        </div>
-
-        <h3 className="font-display text-xl font-semibold tracking-tight text-zinc-100 transition-colors duration-200 group-hover:text-white">
-          {project.title}
-        </h3>
-
-        <p className="mt-3 flex-1 text-[15px] leading-relaxed text-zinc-400">
-          {project.description}
-        </p>
-
-        <ul className="mt-6 flex flex-wrap gap-2">
-          {project.tags.map((tag) => (
-            <li
-              key={tag}
-              className="rounded-full bg-white/5 px-2.5 py-1 text-xs font-medium text-zinc-400"
-            >
-              {tag}
-            </li>
-          ))}
-        </ul>
-      </a>
-    </motion.li>
-  );
-}
 
 export default function Projects() {
   return (
-    <section id="projects" className="scroll-mt-24 py-24 sm:py-32">
+    <section id="projects" className="section projects-section">
       <div className="container-content">
-        <SectionHeading
-          eyebrow="Work"
-          title="Selected projects"
-          description="A handful of things I've designed and built recently. Each one taught me something."
-        />
-
-        <Reveal
-          as="ul"
-          stagger={0.07}
-          className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3"
-        >
-          {projects.map((project) => (
-            <ProjectCard key={project.title} project={project} />
+        <div className="work-heading">
+          <SectionHeading title="Ideas, brought to life." />
+          <p>
+            From a community’s home on the web
+            <br className="desktop-break" /> to a world built from imagination.
+          </p>
+        </div>
+        <div className="projects-grid">
+          {projects.map((project, index) => (
+            <article
+              key={project.title}
+              className={`project-card ${index === 0 ? "project-featured" : ""}`}
+            >
+              <a
+                href={project.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="project-link"
+                aria-label={`View ${project.title} (opens in a new tab)`}
+              >
+                <div className={`project-visual project-visual-${index}`}>
+                  <div className="project-browser">
+                    <div className="project-screen">
+                      <Image
+                        src={project.image}
+                        alt={project.imageAlt}
+                        fill
+                        sizes={
+                          index === 0
+                            ? "(max-width: 760px) 90vw, 60vw"
+                            : "(max-width: 760px) 90vw, 44vw"
+                        }
+                      />
+                    </div>
+                  </div>
+                  <span className="project-open" aria-hidden="true">
+                    <ArrowUpRightIcon />
+                  </span>
+                </div>
+                <div className="project-info">
+                  <div className="project-meta">
+                    {index === 0 && <span>Featured project</span>}
+                    <span>{project.year}</span>
+                  </div>
+                  <h3>{project.title}</h3>
+                  <p>{project.description}</p>
+                  <ul className="project-tags">
+                    {project.tags.map((tag) => (
+                      <li key={tag}>{tag}</li>
+                    ))}
+                  </ul>
+                  <span className="project-visit">
+                    Explore project <ArrowUpRightIcon />
+                  </span>
+                </div>
+              </a>
+            </article>
           ))}
-        </Reveal>
+        </div>
       </div>
     </section>
   );

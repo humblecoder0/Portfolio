@@ -8,13 +8,13 @@
 
 export const profile = {
   name: "Asad Ahmed",
-  role: "Website Designer, Developer & Ad Creator",
+  role: "Website Designer & Developer",
   tagline:
-    "I design and build stunning, fast websites — and the ads that bring them traffic.",
+    "I design and build stunning, fast websites and the ads that bring them traffic.",
   // Used for the About section.
   bio: [
-    "I'm a 19-year-old, self-taught web designer, developer, and ad creator based in Leeds. I build complete websites end-to-end — from the first design decision to the live, polished product — with a focus on sites that look stunning and actually convert.",
-    "I work hand-in-hand with cutting-edge AI tools like Claude Code to ship faster and push further than a solo builder normally could. As an AI entrepreneur, I'm fascinated by where design, code, and advertising meet, and I'm always experimenting at that edge.",
+    "I'm a 20-year-old, self-taught web designer and developer based in Leeds. I build complete websites end-to-end, from the first design decision to the live, polished product, with a focus on sites that look stunning and actually convert.",
+    "I work hand in hand with cutting-edge AI tools to ship faster and push further than a solo builder normally could. As an AI entrepreneur, I'm fascinated by where design, code, and advertising meet, and I'm always experimenting at that edge.",
   ],
   // Where the hero CTA and contact buttons point.
   email: "therealasadahmed@gmail.com",
@@ -43,6 +43,8 @@ export type Project = {
   description: string;
   href: string;
   // short tags shown on the card
+  image: string;
+  imageAlt: string;
   tags: string[];
   // accent year/label in the corner
   year: string;
@@ -52,24 +54,33 @@ export const projects: Project[] = [
   {
     title: "Aurelion Codex",
     description:
-      "A concept e-commerce storefront — a clean, conversion-focused product-selling website designed to showcase and sell with clarity.",
+      "An immersive concept storefront that brings a fantasy world to life through cinematic visuals, interactive storytelling, and a clear path to purchase.",
     href: "https://aurelion.netlify.app/",
+    image: "/projects/aurelion.png",
+    imageAlt:
+      "Aurelion’s cinematic mountain landscape and Where Myth Becomes Matter headline",
     tags: ["Web Design", "E-commerce", "Concept"],
     year: "2025",
   },
   {
     title: "Makki Masjid",
     description:
-      "A website built for charity work — a warm, accessible home for a community organisation to share its mission and reach supporters.",
+      "A website built for charity work, providing a warm, accessible home for a community organisation to share its mission and reach supporters.",
     href: "https://makkimasjid.netlify.app/",
+    image: "/projects/makki.png",
+    imageAlt:
+      "Makki Masjid website with a community welcome and daily prayer times",
     tags: ["Charity", "Web Design", "Community"],
     year: "2025",
   },
   {
     title: "BL Simulation",
     description:
-      "A physics simulation I built as a hobby project — an interactive exploration of motion and forces, made for the joy of figuring it out.",
+      "A physics simulation I built as a hobby project. An interactive exploration of motion and forces, made for the joy of figuring it out.",
     href: "https://blsimulation.netlify.app/",
+    image: "/projects/simulation.png",
+    imageAlt:
+      "Interactive black hole simulation showing orbiting objects and a glowing accretion disk",
     tags: ["Physics", "Simulation", "Interactive"],
     year: "2025",
   },
@@ -83,7 +94,12 @@ export type SkillGroup = {
 export const skills: SkillGroup[] = [
   {
     title: "Web Design",
-    items: ["UI Design", "Responsive Layout", "Visual Identity", "Landing Pages"],
+    items: [
+      "UI Design",
+      "Responsive Layout",
+      "Visual Identity",
+      "Landing Pages",
+    ],
   },
   {
     title: "Web Development",
@@ -95,15 +111,15 @@ export const skills: SkillGroup[] = [
   },
   {
     title: "AI Tools",
-    items: ["Claude Code", "AI-Assisted Build", "Rapid Prototyping", "Automation"],
+    items: ["AI-Assisted Build", "Rapid Prototyping", "Automation"],
   },
 ];
 
 // Used in <title>, meta description, and the footer.
 export const site = {
-  title: "Asad Ahmed — Website Designer & Developer",
+  title: "Asad Ahmed | Website Designer & Developer",
   description:
-    "Portfolio of Asad Ahmed, a self-taught website designer, developer, and ad creator in Leeds building stunning, fast websites with cutting-edge AI.",
+    "Portfolio of Asad Ahmed, a self-taught website designer and developer in Leeds building stunning, fast websites with cutting-edge AI.",
   // Set this to your deployed URL for correct OG/social metadata.
   url: "https://example.com",
 };

@@ -9,14 +9,10 @@ export default function Home() {
   return (
     <>
       <Nav />
-      <main id="main">
+      <main id="main" tabIndex={-1}>
         <Hero />
-        {/* hairline divider between hero and the rest */}
-        <div className="container-content">
-          <div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-        </div>
-        <About />
         <Projects />
+        <About />
         <Skills />
         <Contact />
       </main>

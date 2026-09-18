@@ -11,21 +11,25 @@ const config: Config = {
       colors: {
         // Layered near-blacks for depth (not pure #000)
         ink: {
-          950: "#0a0a0a",
-          900: "#0d0d0d",
-          850: "#121212",
-          800: "#161616",
-          700: "#1c1c1c",
+          950: "#10151b",
+          900: "#151d26",
+          850: "#19212a",
+          800: "#1c2733",
+          700: "#1c2c3c",
         },
         accent: {
-          DEFAULT: "#5b9dff",
-          soft: "#7db1ff",
-          dim: "#3f7fe0",
+          DEFAULT: "#9bc9e5",
+          soft: "#c7e5f6",
+          dim: "#a5cee7",
         },
       },
       fontFamily: {
         sans: ["var(--font-inter)", "system-ui", "sans-serif"],
-        display: ["var(--font-space-grotesk)", "var(--font-inter)", "sans-serif"],
+        display: [
+          "var(--font-space-grotesk)",
+          "var(--font-inter)",
+          "sans-serif",
+        ],
       },
       borderColor: {
         hairline: "rgba(255,255,255,0.08)",

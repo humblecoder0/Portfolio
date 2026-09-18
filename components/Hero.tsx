@@ -1,101 +1,85 @@
-"use client";
-
-import { motion, useReducedMotion, type Variants } from "framer-motion";
-import { profile } from "@/lib/content";
+import Image from "next/image";
+import { profile, projects } from "@/lib/content";
 import { ArrowDownIcon, ArrowUpRightIcon } from "./Icons";
 
-const EASE = [0.22, 1, 0.36, 1] as const;
-
 export default function Hero() {
-  const reduce = useReducedMotion();
-
-  const container: Variants = {
-    hidden: {},
-    show: {
-      transition: { staggerChildren: reduce ? 0 : 0.1, delayChildren: 0.15 },
-    },
-  };
-
-  const item: Variants = {
-    hidden: { opacity: 0, y: reduce ? 0 : 20 },
-    show: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: reduce ? 0 : 0.7, ease: EASE },
-    },
-  };
-
+  const featured = projects[0];
   return (
-    <section
-      id="hero"
-      className="relative flex min-h-[92svh] items-center overflow-hidden"
-    >
-      {/* Soft glow behind the headline */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute left-1/2 top-1/3 -z-10 h-[36rem] w-[36rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent/10 blur-[120px] animate-glow-pulse"
-      />
-
-      <motion.div
-        variants={container}
-        initial="hidden"
-        animate="show"
-        className="container-content"
-      >
-        {profile.availability && (
-          <motion.p
-            variants={item}
-            className="mb-5 flex items-center gap-2 text-sm font-medium text-zinc-400"
-          >
-            <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent/60" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
-            </span>
-            {profile.availability}
-          </motion.p>
-        )}
-
-        <motion.h1
-          variants={item}
-          className="font-display text-5xl font-semibold leading-[1.05] tracking-tight sm:text-7xl"
-        >
-          <span className="text-gradient">{profile.name}</span>
-        </motion.h1>
-
-        <motion.p
-          variants={item}
-          className="mt-3 font-display text-2xl font-medium text-accent-soft sm:text-3xl"
-        >
-          {profile.role}
-        </motion.p>
-
-        <motion.p
-          variants={item}
-          className="mt-6 max-w-xl text-lg leading-relaxed text-zinc-400"
-        >
-          {profile.tagline}
-        </motion.p>
-
-        <motion.div
-          variants={item}
-          className="mt-9 flex flex-wrap items-center gap-3"
-        >
+    <section id="hero" className="hero">
+      <div className="container-content">
+        <div className="hero-topline">
+          {profile.availability && (
+            <p className="availability">
+              <span />
+              {profile.availability}
+            </p>
+          )}
+        </div>
+        <div className="hero-grid">
+          <div className="hero-copy">
+            <p className="hero-intro">Hello, I’m {profile.name}.</p>
+            <h1>
+              Websites made
+              <br />
+              to <em>stand out.</em>
+            </h1>
+            <p className="hero-description">{profile.tagline}</p>
+            <div className="hero-actions">
+              <a href="#projects" className="button button-primary">
+                Explore my work <ArrowDownIcon />
+              </a>
+              <a href="#contact" className="text-link">
+                Let’s talk <ArrowUpRightIcon />
+              </a>
+            </div>
+          </div>
           <a
-            href="#projects"
-            className="group inline-flex items-center gap-2 rounded-full bg-accent px-5 py-3 text-sm font-semibold text-ink-950 transition-all duration-200 hover:bg-accent-soft hover:shadow-[0_0_30px_-6px] hover:shadow-accent/60"
+            href={featured.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hero-showcase"
+            aria-label={`Explore ${featured.title} (opens in a new tab)`}
           >
-            View my work
-            <ArrowDownIcon className="h-4 w-4 transition-transform duration-200 group-hover:translate-y-0.5" />
+            <div className="showcase-grid" aria-hidden="true" />
+            <div className="showcase-window">
+              <div className="showcase-image">
+                <Image
+                  src="/projects/aurelion-art.jpg"
+                  alt="An otherworldly mountain city from the Aurelion project"
+                  fill
+                  priority
+                  sizes="(max-width: 760px) 90vw, 48vw"
+                />
+                <div className="showcase-title" aria-hidden="true">
+                  <p>
+                    Where Myth
+                    <br />
+                    <em>Becomes Matter.</em>
+                  </p>
+                </div>
+              </div>
+              <div className="showcase-caption">
+                <span>{featured.title}</span>
+              </div>
+            </div>
           </a>
-          <a
-            href="#contact"
-            className="group inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm font-semibold text-zinc-200 hairline transition-colors duration-200 hover:bg-white/5"
-          >
-            Get in touch
-            <ArrowUpRightIcon className="h-4 w-4 text-zinc-400 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+        </div>
+        <div className="hero-bottom">
+          <p>
+            Based in Leeds, UK <span>·</span> Building for everywhere.
+          </p>
+          <a href="#projects">
+            Scroll to discover <ArrowDownIcon />
           </a>
-        </motion.div>
-      </motion.div>
+        </div>
+      </div>
+      <div className="discipline-strip">
+        <div className="container-content">
+          <span>Thoughtful design</span>
+          <span>Purposeful development</span>
+          <span>Creative advertising</span>
+        </div>
+      </div>
     </section>
   );
 }
