@@ -288,9 +288,42 @@ em {
 .showcase-image {
   position: relative;
   aspect-ratio: 1.85;
+  overflow: hidden;
 }
 .showcase-image img {
   object-fit: cover;
+  transform: scale(1.18);
+  transform-origin: center;
+}
+.showcase-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px;
+  font-size: 14px;
+  color: #c1cfdd;
+  border-bottom: 1px solid var(--line);
+}
+.showcase-toolbar > svg {
+  width: 16px;
+  height: 16px;
+}
+.showcase-controls {
+  display: flex;
+  gap: 6px;
+}
+.showcase-controls i {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #ff6057;
+}
+.showcase-controls i:nth-child(2) {
+  background: #febc2e;
+}
+.showcase-controls i:nth-child(3) {
+  background: #28c840;
 }
 .showcase-title {
   position: absolute;

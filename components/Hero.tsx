@@ -42,6 +42,15 @@ export default function Hero() {
           >
             <div className="showcase-grid" aria-hidden="true" />
             <div className="showcase-window">
+              <div className="showcase-toolbar" aria-hidden="true">
+                <span className="showcase-controls">
+                  <i />
+                  <i />
+                  <i />
+                </span>
+                <span>{new URL(featured.href).hostname}</span>
+                <ArrowUpRightIcon />
+              </div>
               <div className="showcase-image">
                 <Image
                   src="/projects/aurelion-art.jpg"
