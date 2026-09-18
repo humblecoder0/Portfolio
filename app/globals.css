@@ -478,9 +478,16 @@ em {
 .project-screen {
   position: relative;
   aspect-ratio: 16/9;
+  overflow: hidden;
 }
 .project-screen img {
   object-fit: cover;
+}
+.project-visual-0 .project-screen img,
+.project-visual-1 .project-screen img {
+  /* Crop the browser scrollbar captured at the screenshot's right edge. */
+  transform: scale(1.025);
+  transform-origin: left center;
 }
 .project-open {
   position: absolute;
