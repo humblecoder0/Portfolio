@@ -6,7 +6,7 @@ export default function Signature({ className = "" }: { className?: string }) {
   return (
     <svg
       className={`signature ${className}`}
-      viewBox="104 78 775 421"
+      viewBox="145 185 1360 610"
       aria-hidden="true"
       focusable="false"
     >
@@ -17,18 +17,17 @@ export default function Signature({ className = "" }: { className?: string }) {
             values="-1 0 0 0 1 0 -1 0 0 1 0 0 -1 0 1 0 0 0 1 0"
           />
           <feColorMatrix type="luminanceToAlpha" />
-          <feMorphology operator="dilate" radius="1.5" />
           <feComponentTransfer result="ink">
-            <feFuncA type="linear" slope="5" />
+            <feFuncA type="linear" slope="3" intercept="-0.15" />
           </feComponentTransfer>
           <feFlood floodColor="white" />
           <feComposite operator="in" in2="ink" />
         </filter>
       </defs>
       <image
-        href="/branding/asad-signature.png"
-        width="925"
-        height="556"
+        href="/branding/asad-signature-new.png"
+        width="1580"
+        height="995"
         filter={`url(#${inkFilter})`}
       />
     </svg>
