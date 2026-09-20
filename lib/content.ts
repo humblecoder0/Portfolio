@@ -74,13 +74,13 @@ export const projects: Project[] = [
     year: "2025",
   },
   {
-    title: "BL Simulation",
+    title: "Black Hole simulator",
     description:
       "A physics simulation I built as a hobby project. An interactive exploration of motion and forces, made for the joy of figuring it out.",
     href: "https://blsimulation.netlify.app/",
-    image: "/projects/simulation.png",
+    image: "/projects/black-hole-simulator.png",
     imageAlt:
-      "Interactive black hole simulation showing orbiting objects and a glowing accretion disk",
+      "Event Horizon black hole simulator with a glowing golden accretion disk and interactive viewing controls",
     tags: ["Physics", "Simulation", "Interactive"],
     year: "2025",
   },
